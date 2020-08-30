@@ -256,6 +256,9 @@ public class ShiroConfig
         filterChainDefinitionMap.put("/login", "anon,captchaValidate");
         // 注册相关
         filterChainDefinitionMap.put("/register", "anon,captchaValidate");
+        filterChainDefinitionMap.put("/system/info/addUserSave", "anon,captchaValidate");
+        filterChainDefinitionMap.put("/system/info/byPhone", "anon,captchaValidate");
+        filterChainDefinitionMap.put("/system/area/dangerAreaList", "anon,captchaValidate");
         // 系统权限列表
         // filterChainDefinitionMap.putAll(SpringUtils.getBean(IMenuService.class).selectPermsAll());
 

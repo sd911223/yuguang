@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.UserInfoMapper">
+    
+    <resultMap type="UserInfo" id="UserInfoResult">
+        <result property="id"    column="id"    />
+        <result property="userName"    column="user_name"    />
+        <result property="idCard"    column="id_card"    />
+        <result property="phoneNumber"    column="phone_number"    />
+        <result property="credentialsType"    column="credentials_type"    />
+        <result property="registerTime"    column="register_time"    />
+        <result property="departure"    column="departure"    />
+        <result property="destination"    column="destination"    />
+        <result property="arrivalTime"    column="arrival_time"    />
+        <result property="trafficType"    column="traffic_type"    />
+        <result property="backup1"    column="backup_1"    />
+        <result property="backup2"    column="backup_2"    />
+        <result property="backup3"    column="backup_3"    />
+        <result property="backup4"    column="backup_4"    />
+        <result property="backup5"    column="backup_5"    />
+    </resultMap>
+
+    <sql id="selectUserInfoVo">
+        select id, user_name, id_card, phone_number, credentials_type, register_time, departure, destination, arrival_time, traffic_type, backup_1, backup_2, backup_3, backup_4, backup_5 from user_info
+    </sql>
+
+    <select id="selectUserInfoList" parameterType="UserInfo" resultMap="UserInfoResult">
+        <include refid="selectUserInfoVo"/>
+        <where>  
+            <if test="userName != null  and userName != ''"> and user_name like concat('%', #{userName}, '%')</if>
+            <if test="idCard != null  and idCard != ''"> and id_card = #{idCard}</if>
+            <if test="phoneNumber != null  and phoneNumber != ''"> and phone_number = #{phoneNumber}</if>
+            <if test="credentialsType != null "> and credentials_type = #{credentialsType}</if>
+            <if test="registerTime != null "> and register_time = #{registerTime}</if>
+            <if test="departure != null  and departure != ''"> and departure = #{departure}</if>
+            <if test="destination != null  and destination != ''"> and destination = #{destination}</if>
+            <if test="arrivalTime != null "> and arrival_time = #{arrivalTime}</if>
+            <if test="trafficType != null "> and traffic_type = #{trafficType}</if>
+            <if test="backup1 != null  and backup1 != ''"> and backup_1 = #{backup1}</if>
+            <if test="backup2 != null  and backup2 != ''"> and backup_2 = #{backup2}</if>
+            <if test="backup3 != null  and backup3 != ''"> and backup_3 = #{backup3}</if>
+            <if test="backup4 != null  and backup4 != ''"> and backup_4 = #{backup4}</if>
+            <if test="backup5 != null  and backup5 != ''"> and backup_5 = #{backup5}</if>
+        </where>
+    </select>
+    
+    <select id="selectUserInfoById" parameterType="Long" resultMap="UserInfoResult">
+        <include refid="selectUserInfoVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertUserInfo" parameterType="UserInfo" useGeneratedKeys="true" keyProperty="id">
+        insert into user_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userName != null">user_name,</if>
+            <if test="idCard != null">id_card,</if>
+            <if test="phoneNumber != null">phone_number,</if>
+            <if test="credentialsType != null">credentials_type,</if>
+            <if test="registerTime != null">register_time,</if>
+            <if test="departure != null">departure,</if>
+            <if test="destination != null">destination,</if>
+            <if test="arrivalTime != null">arrival_time,</if>
+            <if test="trafficType != null">traffic_type,</if>
+            <if test="backup1 != null">backup_1,</if>
+            <if test="backup2 != null">backup_2,</if>
+            <if test="backup3 != null">backup_3,</if>
+            <if test="backup4 != null">backup_4,</if>
+            <if test="backup5 != null">backup_5,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userName != null">#{userName},</if>
+            <if test="idCard != null">#{idCard},</if>
+            <if test="phoneNumber != null">#{phoneNumber},</if>
+            <if test="credentialsType != null">#{credentialsType},</if>
+            <if test="registerTime != null">#{registerTime},</if>
+            <if test="departure != null">#{departure},</if>
+            <if test="destination != null">#{destination},</if>
+            <if test="arrivalTime != null">#{arrivalTime},</if>
+            <if test="trafficType != null">#{trafficType},</if>
+            <if test="backup1 != null">#{backup1},</if>
+            <if test="backup2 != null">#{backup2},</if>
+            <if test="backup3 != null">#{backup3},</if>
+            <if test="backup4 != null">#{backup4},</if>
+            <if test="backup5 != null">#{backup5},</if>
+         </trim>
+    </insert>
+
+    <update id="updateUserInfo" parameterType="UserInfo">
+        update user_info
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="userName != null">user_name = #{userName},</if>
+            <if test="idCard != null">id_card = #{idCard},</if>
+            <if test="phoneNumber != null">phone_number = #{phoneNumber},</if>
+            <if test="credentialsType != null">credentials_type = #{credentialsType},</if>
+            <if test="registerTime != null">register_time = #{registerTime},</if>
+            <if test="departure != null">departure = #{departure},</if>
+            <if test="destination != null">destination = #{destination},</if>
+            <if test="arrivalTime != null">arrival_time = #{arrivalTime},</if>
+            <if test="trafficType != null">traffic_type = #{trafficType},</if>
+            <if test="backup1 != null">backup_1 = #{backup1},</if>
+            <if test="backup2 != null">backup_2 = #{backup2},</if>
+            <if test="backup3 != null">backup_3 = #{backup3},</if>
+            <if test="backup4 != null">backup_4 = #{backup4},</if>
+            <if test="backup5 != null">backup_5 = #{backup5},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteUserInfoById" parameterType="Long">
+        delete from user_info where id = #{id}
+    </delete>
+
+    <delete id="deleteUserInfoByIds" parameterType="String">
+        delete from user_info where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>
