@@ -103,9 +103,9 @@ public class UserInfoController extends BaseController {
 
     @PostMapping("/byPhone")
     @ResponseBody
-    public List<UserInfo> byPhone(@RequestParam("phoneNumber") String phoneNumber) {
+    public List<UserInfo> byPhone(@RequestBody UserInfoReq userInfo) {
         UserInfo info = new UserInfo();
-        info.setPhoneNumber(phoneNumber);
+        info.setPhoneNumber(userInfo.getPhoneNumber());
         List<UserInfo> list = userInfoService.selectUserInfoList(info);
         return list;
     }
