@@ -12,7 +12,9 @@ ruoyi:
   profile: D:/ruoyi/uploadPath
   # 获取ip地址开关
   addressEnabled: false
-
+weixin:
+  appid: wx9d407701138f3a25
+  appsecret: 9955572db7b034b102f3ee0507347452
 # 开发环境配置
 server:
   # 服务器的HTTP端口，默认为80
