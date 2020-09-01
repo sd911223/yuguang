@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 <head>
-    <th:block th:include="include :: header('人员列表')" />
+    <th:block th:include="include :: header('【人员信息】列表')" />
 </head>
 <body class="gray-bg">
      <div class="container-div">
@@ -26,7 +26,9 @@
                                 <label>证件类型：</label>
                                 <select name="credentialsType">
                                     <option value="">所有</option>
-                                    <option value="-1">代码生成请选择字典属性</option>
+                                    <option value="0">身份证</option>
+                                    <option value="1">护照</option>
+                                    <option value="2">其他</option>
                                 </select>
                             </li>
                             <li class="select-time">
@@ -53,29 +55,30 @@
                                 <label>交通方式：</label>
                                 <select name="trafficType">
                                     <option value="">所有</option>
-                                    <option value="-1">代码生成请选择字典属性</option>
+                                    <option value="0">火车</option>
+                                    <option value="1">飞机</option>
                                 </select>
                             </li>
                             <li>
-                                <label>备用1：</label>
+                                <label>风险地区：</label>
                                 <input type="text" name="backup1"/>
                             </li>
-                            <li>
-                                <label>备用2：</label>
-                                <input type="text" name="backup2"/>
-                            </li>
-                            <li>
-                                <label>备用3：</label>
-                                <input type="text" name="backup3"/>
-                            </li>
-                            <li>
-                                <label>备用4：</label>
-                                <input type="text" name="backup4"/>
-                            </li>
-                            <li>
-                                <label>备用5：</label>
-                                <input type="text" name="backup5"/>
-                            </li>
+<!--                            <li>-->
+<!--                                <label>备用2：</label>-->
+<!--                                <input type="text" name="backup2"/>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <label>备用3：</label>-->
+<!--                                <input type="text" name="backup3"/>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <label>备用4：</label>-->
+<!--                                <input type="text" name="backup4"/>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <label>备用5：</label>-->
+<!--                                <input type="text" name="backup5"/>-->
+<!--                            </li>-->
                             <li>
                                 <a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
                                 <a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
@@ -164,24 +167,24 @@
                 },
                 {
                     field: 'backup1',
-                    title: '备用1'
+                    title: '风险地区'
                 },
-                {
-                    field: 'backup2',
-                    title: '备用2'
-                },
-                {
-                    field: 'backup3',
-                    title: '备用3'
-                },
-                {
-                    field: 'backup4',
-                    title: '备用4'
-                },
-                {
-                    field: 'backup5',
-                    title: '备用5'
-                },
+                // {
+                //     field: 'backup2',
+                //     title: '备用2'
+                // },
+                // {
+                //     field: 'backup3',
+                //     title: '备用3'
+                // },
+                // {
+                //     field: 'backup4',
+                //     title: '备用4'
+                // },
+                // {
+                //     field: 'backup5',
+                //     title: '备用5'
+                // },
                 {
                     title: '操作',
                     align: 'center',

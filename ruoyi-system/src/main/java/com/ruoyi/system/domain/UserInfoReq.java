@@ -1,7 +1,5 @@
 package com.ruoyi.system.domain;
 
-import java.util.Date;
-
 public class UserInfoReq {
     /**
      * 主键ID
@@ -26,7 +24,7 @@ public class UserInfoReq {
     /**
      * 证件类型
      */
-    private Long credentialsType;
+    private String credentialsType;
 
     /**
      * 登记时间
@@ -51,7 +49,7 @@ public class UserInfoReq {
     /**
      * 交通方式
      */
-    private Long trafficType;
+    private String trafficType;
 
     /**
      * 备用1
@@ -94,7 +92,7 @@ public class UserInfoReq {
         this.phoneNumber = phoneNumber;
     }
 
-    public void setCredentialsType(Long credentialsType) {
+    public void setCredentialsType(String credentialsType) {
         this.credentialsType = credentialsType;
     }
 
@@ -114,7 +112,7 @@ public class UserInfoReq {
         this.arrivalTime = arrivalTime;
     }
 
-    public void setTrafficType(Long trafficType) {
+    public void setTrafficType(String trafficType) {
         this.trafficType = trafficType;
     }
 
@@ -154,7 +152,7 @@ public class UserInfoReq {
         return phoneNumber;
     }
 
-    public Long getCredentialsType() {
+    public String getCredentialsType() {
         return credentialsType;
     }
 
@@ -174,7 +172,7 @@ public class UserInfoReq {
         return arrivalTime;
     }
 
-    public Long getTrafficType() {
+    public String getTrafficType() {
         return trafficType;
     }
 

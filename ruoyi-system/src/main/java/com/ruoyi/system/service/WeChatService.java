@@ -1,6 +1,5 @@
 package com.ruoyi.system.service;
 
-import com.ruoyi.system.domain.LoginRqe;
 import com.ruoyi.system.domain.UserInfo;
 
 import java.util.Map;

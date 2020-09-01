@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 <head>
-    <th:block th:include="include :: header('【风险地区】列表')" />
+    <th:block th:include="include :: header('【出发地】列表')" />
 </head>
 <body class="gray-bg">
      <div class="container-div">
@@ -32,16 +32,16 @@
             </div>
 
             <div class="btn-group-sm" id="toolbar" role="group">
-                <a class="btn btn-success" onclick="$.operate.add()" shiro:hasPermission="system:area:add">
+                <a class="btn btn-success" onclick="$.operate.add()" shiro:hasPermission="system:location:add">
                     <i class="fa fa-plus"></i> 添加
                 </a>
-                <a class="btn btn-primary single disabled" onclick="$.operate.edit()" shiro:hasPermission="system:area:edit">
+                <a class="btn btn-primary single disabled" onclick="$.operate.edit()" shiro:hasPermission="system:location:edit">
                     <i class="fa fa-edit"></i> 修改
                 </a>
-                <a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="system:area:remove">
+                <a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="system:location:remove">
                     <i class="fa fa-remove"></i> 删除
                 </a>
-                <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="system:area:export">
+                <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="system:location:export">
                     <i class="fa fa-download"></i> 导出
                 </a>
             </div>
@@ -52,9 +52,9 @@
     </div>
     <th:block th:include="include :: footer" />
     <script th:inline="javascript">
-        var editFlag = [[${@permission.hasPermi('system:area:edit')}]];
-        var removeFlag = [[${@permission.hasPermi('system:area:remove')}]];
-        var prefix = ctx + "system/area";
+        var editFlag = [[${@permission.hasPermi('system:location:edit')}]];
+        var removeFlag = [[${@permission.hasPermi('system:location:remove')}]];
+        var prefix = ctx + "system/location";
 
         $(function() {
             var options = {

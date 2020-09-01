@@ -5,6 +5,7 @@ import com.ruoyi.common.core.controller.BaseController;
 import com.ruoyi.common.core.domain.AjaxResult;
 import com.ruoyi.common.core.page.TableDataInfo;
 import com.ruoyi.common.enums.BusinessType;
+import com.ruoyi.common.utils.DateUtils;
 import com.ruoyi.common.utils.poi.ExcelUtil;
 import com.ruoyi.system.domain.UserInfo;
 import com.ruoyi.system.domain.UserInfoReq;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -52,6 +54,24 @@ public class UserInfoController extends BaseController {
     public TableDataInfo list(UserInfo userInfo) {
         startPage();
         List<UserInfo> list = userInfoService.selectUserInfoList(userInfo);
+        SimpleDateFormat sdf1=new SimpleDateFormat("yyyy-MM-dd");
+        list.forEach(e -> {
+            if (e.getTrafficType().equals("0")) {
+                e.setTrafficType("火车");
+            }
+            if (e.getTrafficType().equals("1")) {
+                e.setTrafficType("飞机");
+            }
+            if (e.getCredentialsType().equals("0")) {
+                e.setCredentialsType("身份证");
+            }
+            if (e.getCredentialsType().equals("1")) {
+                e.setCredentialsType("护照");
+            }
+            if (e.getCredentialsType().equals("2")) {
+                e.setCredentialsType("其他");
+            }
+        });
         return getDataTable(list);
     }
 
@@ -98,6 +118,7 @@ public class UserInfoController extends BaseController {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         info.setRegisterTime(format.parse(registerTime));
         info.setArrivalTime(format.parse(arrivalTime));
+        info.setCreateTime(new Date());
         return toAjax(userInfoService.insertUserInfo(info));
     }
 

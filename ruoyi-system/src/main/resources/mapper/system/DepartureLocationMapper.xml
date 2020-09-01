@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.DepartureLocationMapper">
+    
+    <resultMap type="DepartureLocation" id="DepartureLocationResult">
+        <result property="id"    column="id"    />
+        <result property="province"    column="province"    />
+        <result property="city"    column="city"    />
+        <result property="county"    column="county"    />
+        <result property="createTime"    column="create_time"    />
+    </resultMap>
+
+    <sql id="selectDepartureLocationVo">
+        select id, province, city, county, create_time from departure_location
+    </sql>
+
+    <select id="selectDepartureLocationList" parameterType="DepartureLocation" resultMap="DepartureLocationResult">
+        <include refid="selectDepartureLocationVo"/>
+        <where>  
+            <if test="province != null  and province != ''"> and province = #{province}</if>
+            <if test="city != null  and city != ''"> and city = #{city}</if>
+            <if test="county != null  and county != ''"> and county = #{county}</if>
+        </where>
+    </select>
+    
+    <select id="selectDepartureLocationById" parameterType="Long" resultMap="DepartureLocationResult">
+        <include refid="selectDepartureLocationVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertDepartureLocation" parameterType="DepartureLocation" useGeneratedKeys="true" keyProperty="id">
+        insert into departure_location
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="province != null">province,</if>
+            <if test="city != null">city,</if>
+            <if test="county != null">county,</if>
+            <if test="createTime != null">create_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="province != null">#{province},</if>
+            <if test="city != null">#{city},</if>
+            <if test="county != null">#{county},</if>
+            <if test="createTime != null">#{createTime},</if>
+         </trim>
+    </insert>
+
+    <update id="updateDepartureLocation" parameterType="DepartureLocation">
+        update departure_location
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="province != null">province = #{province},</if>
+            <if test="city != null">city = #{city},</if>
+            <if test="county != null">county = #{county},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteDepartureLocationById" parameterType="Long">
+        delete from departure_location where id = #{id}
+    </delete>
+
+    <delete id="deleteDepartureLocationByIds" parameterType="String">
+        delete from departure_location where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>

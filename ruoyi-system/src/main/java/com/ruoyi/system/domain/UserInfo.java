@@ -8,11 +8,11 @@ import com.ruoyi.common.core.domain.BaseEntity;
 
 /**
  * 【请填写功能名称】对象 user_info
- *
+ * 
  * @author ruoyi
- * @date 2020-08-30
+ * @date 2020-09-01
  */
-public class UserInfo
+public class UserInfo extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
@@ -31,9 +31,9 @@ public class UserInfo
     @Excel(name = "手机号")
     private String phoneNumber;
 
-    /** 证件类型 */
-    @Excel(name = "证件类型")
-    private Long credentialsType;
+    /** 证件类型0:身份证,1:护照,2:其他 */
+    @Excel(name = "证件类型0:身份证,1:护照,2:其他")
+    private String credentialsType;
 
     /** 登记时间 */
     @Excel(name = "登记时间", width = 30, dateFormat = "yyyy-MM-dd")
@@ -53,7 +53,7 @@ public class UserInfo
 
     /** 交通方式 */
     @Excel(name = "交通方式")
-    private Long trafficType;
+    private String trafficType;
 
     /** 备用1 */
     @Excel(name = "备用1")
@@ -75,138 +75,138 @@ public class UserInfo
     @Excel(name = "备用5")
     private String backup5;
 
-    public void setId(Long id)
+    public void setId(Long id) 
     {
         this.id = id;
     }
 
-    public Long getId()
+    public Long getId() 
     {
         return id;
     }
-    public void setUserName(String userName)
+    public void setUserName(String userName) 
     {
         this.userName = userName;
     }
 
-    public String getUserName()
+    public String getUserName() 
     {
         return userName;
     }
-    public void setIdCard(String idCard)
+    public void setIdCard(String idCard) 
     {
         this.idCard = idCard;
     }
 
-    public String getIdCard()
+    public String getIdCard() 
     {
         return idCard;
     }
-    public void setPhoneNumber(String phoneNumber)
+    public void setPhoneNumber(String phoneNumber) 
     {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getPhoneNumber()
+    public String getPhoneNumber() 
     {
         return phoneNumber;
     }
-    public void setCredentialsType(Long credentialsType)
+    public void setCredentialsType(String credentialsType) 
     {
         this.credentialsType = credentialsType;
     }
 
-    public Long getCredentialsType()
+    public String getCredentialsType() 
     {
         return credentialsType;
     }
-    public void setRegisterTime(Date registerTime)
+    public void setRegisterTime(Date registerTime) 
     {
         this.registerTime = registerTime;
     }
 
-    public Date getRegisterTime()
+    public Date getRegisterTime() 
     {
         return registerTime;
     }
-    public void setDeparture(String departure)
+    public void setDeparture(String departure) 
     {
         this.departure = departure;
     }
 
-    public String getDeparture()
+    public String getDeparture() 
     {
         return departure;
     }
-    public void setDestination(String destination)
+    public void setDestination(String destination) 
     {
         this.destination = destination;
     }
 
-    public String getDestination()
+    public String getDestination() 
     {
         return destination;
     }
-    public void setArrivalTime(Date arrivalTime)
+    public void setArrivalTime(Date arrivalTime) 
     {
         this.arrivalTime = arrivalTime;
     }
 
-    public Date getArrivalTime()
+    public Date getArrivalTime() 
     {
         return arrivalTime;
     }
-    public void setTrafficType(Long trafficType)
+    public void setTrafficType(String trafficType) 
     {
         this.trafficType = trafficType;
     }
 
-    public Long getTrafficType()
+    public String getTrafficType() 
     {
         return trafficType;
     }
-    public void setBackup1(String backup1)
+    public void setBackup1(String backup1) 
     {
         this.backup1 = backup1;
     }
 
-    public String getBackup1()
+    public String getBackup1() 
     {
         return backup1;
     }
-    public void setBackup2(String backup2)
+    public void setBackup2(String backup2) 
     {
         this.backup2 = backup2;
     }
 
-    public String getBackup2()
+    public String getBackup2() 
     {
         return backup2;
     }
-    public void setBackup3(String backup3)
+    public void setBackup3(String backup3) 
     {
         this.backup3 = backup3;
     }
 
-    public String getBackup3()
+    public String getBackup3() 
     {
         return backup3;
     }
-    public void setBackup4(String backup4)
+    public void setBackup4(String backup4) 
     {
         this.backup4 = backup4;
     }
 
-    public String getBackup4()
+    public String getBackup4() 
     {
         return backup4;
     }
-    public void setBackup5(String backup5)
+    public void setBackup5(String backup5) 
     {
         this.backup5 = backup5;
     }
 
-    public String getBackup5()
+    public String getBackup5() 
     {
         return backup5;
     }
@@ -229,6 +229,7 @@ public class UserInfo
             .append("backup3", getBackup3())
             .append("backup4", getBackup4())
             .append("backup5", getBackup5())
+            .append("createTime", getCreateTime())
             .toString();
     }
 }
