@@ -62,6 +62,9 @@ public class UserInfoController extends BaseController {
             if (e.getTrafficType().equals("1")) {
                 e.setTrafficType("飞机");
             }
+            if (e.getTrafficType().equals("2")) {
+                e.setTrafficType("乘车");
+            }
             if (e.getCredentialsType().equals("0")) {
                 e.setCredentialsType("身份证");
             }
