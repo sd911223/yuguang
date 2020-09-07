@@ -56,19 +56,19 @@ public class UserInfo extends BaseEntity
     private String trafficType;
 
     /** 备用1 */
-    @Excel(name = "备用1")
+    @Excel(name = "风险地区")
     private String backup1;
 
     /** 备用2 */
-    @Excel(name = "备用2")
+    @Excel(name = "途径地")
     private String backup2;
 
     /** 备用3 */
-    @Excel(name = "备用3")
+    @Excel(name = "航班/车次/车牌号")
     private String backup3;
 
     /** 备用4 */
-    @Excel(name = "备用4")
+    @Excel(name = "座位号")
     private String backup4;
 
     /** 备用5 */
