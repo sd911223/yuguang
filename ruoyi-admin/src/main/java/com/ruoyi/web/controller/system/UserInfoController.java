@@ -54,7 +54,6 @@ public class UserInfoController extends BaseController {
     public TableDataInfo list(UserInfo userInfo) {
         startPage();
         List<UserInfo> list = userInfoService.selectUserInfoList(userInfo);
-        SimpleDateFormat sdf1=new SimpleDateFormat("yyyy-MM-dd");
         list.forEach(e -> {
             if (e.getTrafficType().equals("0")) {
                 e.setTrafficType("火车");
@@ -87,6 +86,26 @@ public class UserInfoController extends BaseController {
     @ResponseBody
     public AjaxResult export(UserInfo userInfo) {
         List<UserInfo> list = userInfoService.selectUserInfoList(userInfo);
+        list.forEach(e -> {
+            if (e.getTrafficType().equals("0")) {
+                e.setTrafficType("火车");
+            }
+            if (e.getTrafficType().equals("1")) {
+                e.setTrafficType("飞机");
+            }
+            if (e.getTrafficType().equals("2")) {
+                e.setTrafficType("乘车");
+            }
+            if (e.getCredentialsType().equals("0")) {
+                e.setCredentialsType("身份证");
+            }
+            if (e.getCredentialsType().equals("1")) {
+                e.setCredentialsType("护照");
+            }
+            if (e.getCredentialsType().equals("2")) {
+                e.setCredentialsType("其他");
+            }
+        });
         ExcelUtil<UserInfo> util = new ExcelUtil<UserInfo>(UserInfo.class);
         return util.exportExcel(list, "info");
     }

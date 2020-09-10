@@ -32,7 +32,7 @@ public class UserInfo extends BaseEntity
     private String phoneNumber;
 
     /** 证件类型0:身份证,1:护照,2:其他 */
-    @Excel(name = "证件类型0:身份证,1:护照,2:其他")
+    @Excel(name = "证件类型")
     private String credentialsType;
 
     /** 登记时间 */
